@@ -15,18 +15,23 @@ console.log("My name is " + this.name + " and I know " + lang1 + ", " + lang2 + 
 //DO NOT USE ARROW FN because this.name will be undefined.
 
 var stacey = {
-name: "Stacey",
+name: "Hermione",
 age: 110
 };
 
 var languages = ["Javascript", "Ruby", "Python"];
 
 //invoke using .call
-
+//first argument is the context & then can pass other arguments to fn just like normal.
+console.log("With .call")
 sayName.call(stacey, languages[0], languages[1], languages[2]);
 
 //or .apply
-// sayName.apply(stacey, languages);
+console.log("With .apply")
+sayName.apply(stacey, languages);
+console.log("With .bind")
+var newFn = sayName.bind(stacey, languages)
+newFn()
 
     </script>
 
