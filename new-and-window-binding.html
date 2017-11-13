@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New and Window Binding</title>
+  </head>
+  <body>
+
+    <script>
+    //BINDING WITH NEW
+//Animal is a constructor fn so it needs to be capitalized
+    var Animal = function(color, name, type){
+      this.color = color;
+      this.name = name;
+      this.type = type
+    }
+//Create a new instance of Animal
+var zebra = new Animal('black and white', 'Zorro', 'Zebra')
+var sloth = new Animal ('greenish brown', 'Ziggy', 'Sloth')
+//because we are invoking with 'new' keyword, Javascript (behind the scnes) is creating a new object and saving it as this = {}; (? he will talk more later videos.)
+console.log(zebra.color);
+console.log(zebra);
+console.log(sloth);
+console.log(Animal);
+    //WINDOW BINDING
+      var sayAge = function(){
+        'use strict';
+        //without 'use strict' this will return undefined.
+        //use strict will give a helpful error message.
+        console.log(this.age);
+      }
+      var me = {
+        age: 500
+      }
+
+      //for below, 'this' will default to Window
+      //can set an age property for window...
+      //(but need to remove 'use strict')
+      //window.age = 12;
+
+      sayAge();
+
+    </script>
+
+  </body>
+</html>
