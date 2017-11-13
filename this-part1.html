@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>'this' Keyword and Implicit Binding</title>
+  </head>
+  <body>
+
+    <script>
+
+var sayNameMixin = (obj)=>{
+obj.sayName = function(){
+  console.log(this.name);
+}
+}
+var me = {
+  name:'Chessa',
+  age: 101,
+}
+
+var you = {
+name: 'Sun',
+age: '102'
+}
+//pass each object into sayNameMixin
+sayNameMixin(me);
+sayNameMixin(you);
+//then invoke
+me.sayName()
+you.sayName()
+
+//Another example:
+var person = (name, age)=>{
+return{
+  name: name,
+  age: age,
+  sayName: function(){
+    console.log(this.name)
+  },
+  mother: {
+    name: 'Sue',
+    sayName: function(){
+     console.log(this.name)
+    }
+  }
+}
+}
+
+var jim = person("Jim", 42); // create new instance of person and pass arguments into Person fn.
+jim.sayName()
+//jim invokes sayName
+
+jim.mother.sayName()
+//jim invokes person and mother invokes sayName
+    </script>
+  </body>
+</html>
