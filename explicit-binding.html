@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Explicit Binding With .call and .apply</title>
+  </head>
+  <body>
+    <script>
+    //.call(context, optional additional arguments)
+//.apply(context, array)
+
+var sayName = function (lang1, lang2, lang3){
+console.log("My name is " + this.name + " and I know " + lang1 + ", " + lang2 + " and " + lang3  );
+};
+//DO NOT USE ARROW FN because this.name will be undefined.
+
+var stacey = {
+name: "Stacey",
+age: 110
+};
+
+var languages = ["Javascript", "Ruby", "Python"];
+
+//invoke using .call
+
+sayName.call(stacey, languages[0], languages[1], languages[2]);
+
+//or .apply
+// sayName.apply(stacey, languages);
+
+    </script>
+
+  </body>
+</html>
